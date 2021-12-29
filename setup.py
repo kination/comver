@@ -18,15 +18,15 @@ with codecs.open(os.path.join(here, 'requirements.txt')) as f:
     ]
 
 setup(
-    name='comve',
+    name='comver',
     version='0.0.1',
     description='bla bla bla',
     long_description=readme,
     license=license,
     install_requires=install_requirements,
-    py_modules=['comve'],
+    py_modules=['comver'],
     entry_points='''
         [console_scripts]
-        comve=comve:cli
+        comver=comver:cli
     ''',
 )
