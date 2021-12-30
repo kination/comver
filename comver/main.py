@@ -3,10 +3,6 @@ import click
 import uvicorn
 from starlette.applications import Starlette
 
-# from comver.main import Router
-from starlette.routing import Route
-from starlette.responses import JSONResponse
-
 from comver.router import Router
 
 
