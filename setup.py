@@ -3,6 +3,8 @@ import codecs
 import os
 from setuptools import setup
 
+from comver import __app_name__, __version__
+
 here = os.path.dirname(os.path.abspath(__file__))
 
 with open('README.md') as f:
@@ -18,8 +20,8 @@ with codecs.open(os.path.join(here, 'requirements.txt')) as f:
     ]
 
 setup(
-    name='comver',
-    version='0.0.1',
+    name=__app_name__,
+    version=__version__,
     description='bla bla bla',
     long_description=readme,
     license=license,
@@ -27,6 +29,6 @@ setup(
     py_modules=['comver'],
     entry_points='''
         [console_scripts]
-        comver=comver:cli
+        comver=comver.main:cli
     ''',
 )
