@@ -7,6 +7,8 @@ from starlette.applications import Starlette
 from starlette.routing import Route
 from starlette.responses import JSONResponse
 
+from comver.router import Router
+
 
 @click.group()
 def cli():
@@ -14,26 +16,8 @@ def cli():
 
 @click.command()
 def server():
-    # router = Router('')
-    async def __generate_response(request):
-        return JSONResponse({'a': 'b'})
-
-    '''
-    route = {
-        '/hello': JSONResponse({'hello' : 'world'}),
-        '/world': JSONResponse({'world' : 'hello'}),
-    }
-    
-
-    generated_route = []
-    for key, value in route.items():
-        generated_route.append(Route(key, __generate_response(value)))
-    '''
-
-    app = Starlette(debug=True, routes=[
-        Route('/hello', __generate_response),
-        Route('/world', __generate_response)
-    ])
+    router = Router('')
+    app = Starlette(debug=True, routes=router.get_route())
 
     uvicorn.run(app, host="127.0.0.1", port=9000, log_level="info")
 
