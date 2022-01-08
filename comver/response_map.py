@@ -1,6 +1,6 @@
 # Test class / data
 resp_map = {
-    '/hello': {'hello' : 'world'},
+    '/proxy': {'hello' : 'world'},
     '/world': {'world' : 'hello'}
 }
 
@@ -9,7 +9,7 @@ class ResponseMap(object):
         pass
 
     def key_list(self):
-        return ['/hello', '/world']
+        return ['/proxy', '/world']
 
     def get_by_key(self, key):
         return resp_map[key]

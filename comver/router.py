@@ -7,7 +7,7 @@ from comver.response_map import ResponseMap
 
 
 class Router(object):
-    def __init__(self, data_path, type='cli'):
+    def __init__(self, type='cli', data_path=''):
         self.resp_map = ResponseMap()
 
     def get_route(self):
