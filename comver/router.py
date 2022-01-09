@@ -19,8 +19,12 @@ class Router(object):
             generated_route.append(
                 Route(key, self.__generate_response)
             )
-        
+
         return generated_route
+
+    def print_route(self):
+        for key in self.resp_map.key_list():
+            print(f"{key} -> {self.resp_map.get_by_key(key)}")
 
     async def __generate_response(self, request):
         key = urlparse(str(request.url)).path
