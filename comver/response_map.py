@@ -1,16 +1,14 @@
-# Test class / data
-resp_map = {
-    '/hello': {'hello' : 'world'},
-    '/world': {'world' : 'hello'}
-}
 
 class ResponseMap(object):
     def __init__(self):
-        pass
+        self.resp_map = dict()
+
+    def add_get(self, key, data):
+        self.resp_map[key] = data
 
     def key_list(self):
-        return ['/hello', '/world']
+        return [key for key, _ in self.resp_map.items()]
 
     def get_by_key(self, key):
-        return resp_map[key]
+        return self.resp_map[key]
 

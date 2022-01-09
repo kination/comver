@@ -7,8 +7,11 @@ from comver.response_map import ResponseMap
 
 
 class Router(object):
-    def __init__(self, data_path, type='cli'):
-        self.resp_map = ResponseMap()
+    def __init__(self,
+                type='cli',
+                resp_map=ResponseMap(),
+                data_path=''):
+        self.resp_map = resp_map
 
     def get_route(self):
         generated_route = list()
@@ -16,8 +19,12 @@ class Router(object):
             generated_route.append(
                 Route(key, self.__generate_response)
             )
-        
+
         return generated_route
+
+    def print_route(self):
+        for key in self.resp_map.key_list():
+            print(f"{key} -> {self.resp_map.get_by_key(key)}")
 
     async def __generate_response(self, request):
         key = urlparse(str(request.url)).path

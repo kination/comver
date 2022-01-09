@@ -1,9 +1,11 @@
 
 import click
+import json
 import uvicorn
 from starlette.applications import Starlette
 
 from comver.router import Router
+from comver.response_map import ResponseMap
 
 
 @click.group()
@@ -11,11 +13,17 @@ def cli():
     pass
 
 @click.command()
-def server():
-    router = Router('')
+@click.option('--log-level', default='debug')
+@click.option('-g', '--get', multiple=True, type=(str, str))
+def server(log_level, get):
+    resp_map = ResponseMap()
+    for data in get:
+        resp_map.add_get(data[0], data[1])
+
+    router = Router('', resp_map=resp_map)
     app = Starlette(debug=True, routes=router.get_route())
 
-    uvicorn.run(app, host="127.0.0.1", port=9000, log_level="info")
+    uvicorn.run(app, host="127.0.0.1", port=9000, log_level=log_level)
 
 
 cli.add_command(server)
