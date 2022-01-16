@@ -12,7 +12,9 @@ $ python3 -m venv venv
 
 #### Make simple server with few GET request
 ```
-$ comver server --get /hello '{"name": "comver"}' --get /world '{"year": 2022}'
+$ comver server \
+  --get /hello '{"name": "comver"}' \
+  --get /world '{"year": 2022}'
 ```
 
 and check with new terminal
