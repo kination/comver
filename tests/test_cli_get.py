@@ -9,18 +9,21 @@ from click.testing import CliRunner
 from comver.main import server
 
 
-def get_cli_command(runner):
-    print('run commander')
-    runner.invoke(server, ['--get', '/hello', '{"name": "comver"}'])
+def get_cli_command(runner, cli):
+    runner.invoke(server, cli)
 
 
 class TestCli(unittest.TestCase):
     
     def setUp(self):
         runner = CliRunner()
-        self.proc = Process(target=get_cli_command, args=(runner, ))
+        self.proc = Process(
+            target=get_cli_command,
+            args=(runner, ['--get', '/hello', '{"name": "comver"}'])
+        )
+        
         self.proc.start()
-        time.sleep(5)
+        time.sleep(3)   # wait server to be prepared
 
     def tearDown(self) -> None:
         self.proc.terminate()
