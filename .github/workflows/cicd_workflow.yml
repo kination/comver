@@ -15,10 +15,10 @@ jobs:
     name: Python ${{ matrix.python-version }} sample
     steps:
       - uses: actions/checkout@v3
-      - name: Run test
+      - name: Build package & test
         uses: actions/setup-python@v3
         with:
           python-version: ${{ matrix.python-version }}
       - run: |
           pip install -e .
-          python tests/test_cli_get.py 
+          py.test
