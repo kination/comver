@@ -11,7 +11,7 @@ with open('README.md') as f:
     readme = f.read()
 
 # with open('LICENSE') as f:
-#     license = f.read()
+    # license = f.read()
 
 # Requirements
 with codecs.open(os.path.join(here, 'requirements.txt')) as f:
@@ -24,7 +24,6 @@ setup(
     version=__version__,
     description='bla bla bla',
     long_description=readme,
-    license=license,
     install_requires=install_requirements,
     py_modules=['comver'],
     entry_points='''
