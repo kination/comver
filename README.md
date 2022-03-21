@@ -1,3 +1,4 @@
+![CI/CD](https://github.com/djKooks/comver/actions/workflows/cicd_workflow.yml/badge.svg)
 # comver - WIP
 
 TODO: make web server, in simple way
